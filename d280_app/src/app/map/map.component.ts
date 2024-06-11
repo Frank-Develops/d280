@@ -13,16 +13,6 @@ export class MapComponent {
   constructor(private ApicallsService: ApicallsService) { }
 
   ngOnInit() {
-    // this.ApicallsService.getCountryData().subscribe(response => {
-    //   this.data = response;
-    //   console.log(this.data);
-    // });
-
-    // let countries = document.querySelectorAll('path');
-    // for (let i = 0; i < countries.length; i++) {
-    //   countries[i].addEventListener('click', event => console.log((<HTMLInputElement>event.target).id));
-    // }
-
     let countries = document.querySelectorAll('path');
     for (let i = 0; i < countries.length; i++) {
       countries[i].addEventListener('click', event => this.fetchCountry((<HTMLInputElement>event.target).id));
@@ -32,7 +22,12 @@ export class MapComponent {
 
   fetchCountry(country) {
     console.log("this clicks " + country)
+    this.ApicallsService.getCountryData(country).subscribe(response => {
+      this.data = response;
+      console.log(this.data);
+    });
   }
+
 }
 
 
