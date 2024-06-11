@@ -10,6 +10,6 @@ export class ApicallsService {
   constructor(private http: HttpClient) { }
 
   getCountryData(): Observable<any> {
-    return this.http.get('https://jsonplaceholder.typicode.com/todos/1');
+    return this.http.get('http://api.worldbank.org/v2/country/br?format=json');
   }
 }
