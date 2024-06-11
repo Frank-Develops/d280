@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
+import {ApicallsService} from "../apicalls.service"
 
 @Component({
   selector: 'app-map',
@@ -7,11 +8,20 @@ import { Component } from '@angular/core';
 })
 export class MapComponent {
 
+  data: any;
+
+  constructor(private ApicallsService: ApicallsService) {}
+
   ngOnInit() {
-    let countries = document.querySelectorAll('path');
-    for (let i = 0; i < countries.length; i++) {
-      countries[i].addEventListener('click', event => console.log((<HTMLInputElement>event.target).id));
-    }
+    this.ApicallsService.getCountryData().subscribe(response => {
+      this.data = response;
+      console.log(this.data);
+    });
+
+    // let countries = document.querySelectorAll('path');
+    // for (let i = 0; i < countries.length; i++) {
+    //   countries[i].addEventListener('click', event => console.log((<HTMLInputElement>event.target).id));
+    // }
   }
 
 }
