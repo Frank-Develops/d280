@@ -24,7 +24,12 @@ export class MapComponent {
     console.log("this clicks " + country)
     this.ApicallsService.getCountryData(country).subscribe(response => {
       this.data = response;
-      console.log(this.data);
+      console.log(this.data[1][0].name);
+      console.log(this.data[1][0].capitalCity);
+      console.log(this.data[1][0].region.value);
+      console.log(this.data[1][0].incomeLevel.value);
+      console.log(this.data[1][0].latitude);
+      console.log(this.data[1][0].longitude);
     });
   }
 

@@ -12,6 +12,6 @@ export class ApicallsService {
 
   getCountryData(id): Observable<any> {
     console.log(`http://api.worldbank.org/v2/country/${id}?format=json`)
-    return this.http.get(`http://api.worldbank.org/v2/country/${id}?format=json`);
+    return this.http.get(`http://api.worldbank.org/v2/country/${id}?format=json`)
   }
 }
