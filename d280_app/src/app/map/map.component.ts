@@ -10,6 +10,14 @@ export class MapComponent {
 
   data: any;
 
+  name: string = '';
+  capitalCity: string = '';
+  region: string = '';
+  incomeLevel: string = '';
+  latitude: string = '';
+  longitude: string = '';
+
+
   constructor(private ApicallsService: ApicallsService) { }
 
   ngOnInit() {
@@ -17,19 +25,17 @@ export class MapComponent {
     for (let i = 0; i < countries.length; i++) {
       countries[i].addEventListener('click', event => this.fetchCountry((<HTMLInputElement>event.target).id));
     }
-
   }
 
   fetchCountry(country) {
-    console.log("this clicks " + country)
     this.ApicallsService.getCountryData(country).subscribe(response => {
       this.data = response;
-      console.log(this.data[1][0].name);
-      console.log(this.data[1][0].capitalCity);
-      console.log(this.data[1][0].region.value);
-      console.log(this.data[1][0].incomeLevel.value);
-      console.log(this.data[1][0].latitude);
-      console.log(this.data[1][0].longitude);
+      this.name = this.data[1][0].name;
+      this.capitalCity = this.data[1][0].capitalCity;
+      this.region = this.data[1][0].region.value;
+      this.incomeLevel = this.data[1][0].incomeLevel.value
+      this.latitude = this.data[1][0].latitude;
+      this.longitude = this.data[1][0].longitude;
     });
   }
 
